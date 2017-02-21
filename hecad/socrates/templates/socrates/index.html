@@ -1,0 +1,32 @@
+<html>
+  <head>
+    {% load static %}
+    <title>HECAD</title>
+    <link rel="shortcut icon" type="image/png" href="{% static "login/H.jpg" %}"/>
+    <link href="{% static "login/style.css" %}" rel="stylesheet">
+    <link href="{% static "login/bootstrap/CSS/bootstrap.css" %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#">HECAD</a>
+          </a>
+        </div>
+      </div>
+  </nav>
+
+<button type="button" class="btn btn-default"><a href="/hecad/pose/">Agregar Nuevo Vehículo</button><br><br>
+
+<table class="table">
+  <tr><th>Vehículo<th><th>Profit</th><tr>
+  {% if latest_question_list %}
+      {% for car in latest_question_list %}
+          <tr><td><a href="/hecad/{{ car.id }}/">{{ car.vehiculo }}</a><td>
+	    <td>{{car.profit}}</td></tr>
+      {% endfor %}
+  {% else %}
+      <p>No cars are available.</p>
+  {% endif %}
+</table>
